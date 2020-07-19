@@ -12,10 +12,10 @@ const PORT = process.env.PORT || 8000
 //Database Connection
 global.db = mysql.createConnection({
     port: 3306,
-    host: "sql12.freemysqlhosting.net",
-    user: "sql12353410",
-    password: "JMQNFdARsQ",
-    database: "sql12353410",
+    host: "localhost",
+    user: "root",
+    //password: "JMQNFdARsQ",
+    database: "bhurakdatabase",
     multipleStatements: true
 })
 db.connect((err) => {

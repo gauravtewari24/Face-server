@@ -1,11 +1,11 @@
-const cv2 =require('opencv4nodejs')
+const cv2 = require('opencv4nodejs')
 const fs = require('fs')
 
-const detectFaces=(req,res)=>{
+const detectFaces = (req, res) => {
 
     const face_cascade = new cv2.CascadeClassifier(cv2.HAAR_FRONTALFACE_ALT2);
     const webcam = new cv2.VideoCapture(0);
-    const {name} = req.body;
+    const { name } = req.body;
     // The program loops until it has 30 images of the face.
     var count = 0;
     while (count < 30) {
@@ -23,7 +23,7 @@ const detectFaces=(req,res)=>{
         else {
             var fs = require('fs');
             const dir = `./Images/${name}`;
-            
+
             if (!fs.existsSync(dir)) {
                 fs.mkdirSync(dir);
             }
@@ -33,13 +33,13 @@ const detectFaces=(req,res)=>{
         cv2.imshow('Detecting Faces', im)
         key = cv2.waitKey(10)
         if (count == 29)
-        break;
+            break;
     }
     res.json("done")
     webcam.release()
     cv2.destroyAllWindows()
-    
+
 }
-module.exports={
+module.exports = {
     detectFaces
 }
